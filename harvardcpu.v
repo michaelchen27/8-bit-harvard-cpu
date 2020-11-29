@@ -1,6 +1,8 @@
-module harvardcpu( clk, data_program,
-			addr_memory, addr_program, cmd_memory,
-			data_memory);
+module harvardcpu( 
+		clk, data_program,
+		addr_memory, addr_program, cmd_memory,
+		data_memory
+);
 	
 	//clk dari luar
 	//memory interface punya 3 jalur, command bolakbalik(read/write), addr(dari cpu ke memory),data bolakbalik
@@ -18,11 +20,13 @@ wire [7:0] ins_alu, in1, in2, res; //alu <-> cu
 wire [7:0] commandmemory, datamemory, addrmemory; //memory interface <-> cu
 wire [7:0] pc_wire, instruction_wire ; //program memory interface <-> cu
 
-cu controlunit(clk, 
-				commandmemory, addrmemory, datamemory, 	//datamemory
-				pc_wire, instruction_wire, 				//program memory 
-				ins_alu, in1, in2, res); 				//ke alu
-				 
+cu controlunit(
+    clk,                                    // Clock source berasal dari luar
+    cmd_memory, addr_memory, data_memory,   // Data Memory
+                addr_program, data_program, // Program Memory
+    ins_alu, in1, in2, result               // ALU
+);
+
 //alu aritmetik(ins_alu, in1, in2, res, clk); //ke cu
 
 //memoryint memint(commandmemory, cmd_memory, addrmemory, addr_memory, datamemory, data_memory, clk);
