@@ -31,6 +31,6 @@ alu arithmeticlogicunit(op,in1, in2, result, clk);
 
 memoryint memoryinterface(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 
-//progmemint progint(clk, addr_program, pc_wire, data_program, instruction_wire);
+progmemint programmemoryinterface(clk, addr_out, pc, data_pm, ins);
 
 endmodule

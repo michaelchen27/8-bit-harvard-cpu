@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Wed Dec 02 09:34:12 2020
+Wed Dec 02 11:16:51 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -17,12 +17,13 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   9. Registers Removed During Synthesis
  10. General Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Port Connectivity Checks: "memoryint:memoryinterface"
- 13. Port Connectivity Checks: "alu:arithmeticlogicunit"
- 14. Port Connectivity Checks: "cu:controlunit"
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 12. Port Connectivity Checks: "progmemint:programmemoryinterface"
+ 13. Port Connectivity Checks: "memoryint:memoryinterface"
+ 14. Port Connectivity Checks: "alu:arithmeticlogicunit"
+ 15. Port Connectivity Checks: "cu:controlunit"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -48,7 +49,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec 02 09:34:12 2020       ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 02 11:16:51 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
@@ -181,6 +182,7 @@ refer to the applicable agreement for further details.
 ; harvardcpu.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/harvardcpu.v   ;         ;
 ; alu.v                            ; yes             ; User Verilog HDL File  ; D:/harvardcpu/alu.v          ;         ;
 ; memoryint.v                      ; yes             ; User Verilog HDL File  ; D:/harvardcpu/memoryint.v    ;         ;
+; progmemint.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/progmemint.v   ;         ;
 +----------------------------------+-----------------+------------------------+------------------------------+---------+
 
 
@@ -279,6 +281,19 @@ Encoding Type:  One-Hot
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "progmemint:programmemoryinterface"                                                                                                                  ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                         ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; addr_out ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "addr_out[7..1]" have no fanouts                     ;
+; pc       ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "pc[7..1]" will be connected to GND.      ;
+; data_pm  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "data_pm[7..1]" will be connected to GND. ;
+; ins      ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "ins[7..1]" have no fanouts                          ;
+; ins      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "memoryint:memoryinterface"                                                                                                                          ;
 +----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port     ; Type   ; Severity ; Details                                                                                                                                         ;
@@ -360,7 +375,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Dec 02 09:34:00 2020
+    Info: Processing started: Wed Dec 02 11:16:40 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -378,6 +393,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file progmem
     Info (12023): Found entity 1: progmemint File: D:/harvardcpu/progmemint.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file programmemory.v
     Info (12023): Found entity 1: programmemory File: D:/harvardcpu/programmemory.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cpu_tb.v
+    Info (12023): Found entity 1: cpu_tb File: D:/harvardcpu/cpu_tb.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.v
+    Info (12023): Found entity 1: alu_tb File: D:/harvardcpu/alu_tb.v Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(28): created implicit net for "result" File: D:/harvardcpu/harvardcpu.v Line: 28
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(30): created implicit net for "op" File: D:/harvardcpu/harvardcpu.v Line: 30
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created implicit net for "cmd_in" File: D:/harvardcpu/harvardcpu.v Line: 32
@@ -386,6 +405,9 @@ Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created i
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created implicit net for "addr_out" File: D:/harvardcpu/harvardcpu.v Line: 32
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created implicit net for "data_cu" File: D:/harvardcpu/harvardcpu.v Line: 32
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created implicit net for "data_dm" File: D:/harvardcpu/harvardcpu.v Line: 32
+Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "pc" File: D:/harvardcpu/harvardcpu.v Line: 34
+Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "data_pm" File: D:/harvardcpu/harvardcpu.v Line: 34
+Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "ins" File: D:/harvardcpu/harvardcpu.v Line: 34
 Info (12127): Elaborating entity "harvardcpu" for the top level hierarchy
 Info (12128): Elaborating entity "cu" for hierarchy "cu:controlunit" File: D:/harvardcpu/harvardcpu.v Line: 28
 Warning (10272): Verilog HDL Case Statement warning at cu.v(129): case item expression covers a value already covered by a previous case item File: D:/harvardcpu/cu.v Line: 129
@@ -394,9 +416,10 @@ Info (10264): Verilog HDL Case Statement information at cu.v(115): all case item
 Warning (10030): Net "temp_in2" at cu.v(20) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/cu.v Line: 20
 Info (12128): Elaborating entity "alu" for hierarchy "alu:arithmeticlogicunit" File: D:/harvardcpu/harvardcpu.v Line: 30
 Info (12128): Elaborating entity "memoryint" for hierarchy "memoryint:memoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 32
+Info (12128): Elaborating entity "progmemint" for hierarchy "progmemint:programmemoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 34
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "cu:controlunit|gpr" is uninferred due to inappropriate RAM size File: D:/harvardcpu/cu.v Line: 21
-Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "cmd_memory[0]" is stuck at VCC File: D:/harvardcpu/harvardcpu.v Line: 14
     Warning (13410): Pin "cmd_memory[1]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 14
@@ -415,10 +438,10 @@ Info (21057): Implemented 158 device resources after synthesis - the final resou
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
     Info (21061): Implemented 117 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Wed Dec 02 09:34:12 2020
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:27
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
+    Info: Peak virtual memory: 4825 megabytes
+    Info: Processing ended: Wed Dec 02 11:16:51 2020
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:26
 
 

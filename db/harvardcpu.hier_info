@@ -1,5 +1,5 @@
 |harvardcpu
-clk => clk.IN3
+clk => clk.IN4
 data_program[0] => data_program[0].IN1
 data_program[1] => data_program[1].IN1
 data_program[2] => data_program[2].IN1
@@ -415,5 +415,41 @@ clk => tempData_cu[4].CLK
 clk => tempData_cu[5].CLK
 clk => tempData_cu[6].CLK
 clk => tempData_cu[7].CLK
+
+
+|harvardcpu|progmemint:programmemoryinterface
+clk => ~NO_FANOUT~
+addr_out[0] <= pc[0].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[1] <= pc[1].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[2] <= pc[2].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[3] <= pc[3].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[4] <= pc[4].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[5] <= pc[5].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[6] <= pc[6].DB_MAX_OUTPUT_PORT_TYPE
+addr_out[7] <= pc[7].DB_MAX_OUTPUT_PORT_TYPE
+pc[0] => addr_out[0].DATAIN
+pc[1] => addr_out[1].DATAIN
+pc[2] => addr_out[2].DATAIN
+pc[3] => addr_out[3].DATAIN
+pc[4] => addr_out[4].DATAIN
+pc[5] => addr_out[5].DATAIN
+pc[6] => addr_out[6].DATAIN
+pc[7] => addr_out[7].DATAIN
+data_pm[0] => ins[0].DATAIN
+data_pm[1] => ins[1].DATAIN
+data_pm[2] => ins[2].DATAIN
+data_pm[3] => ins[3].DATAIN
+data_pm[4] => ins[4].DATAIN
+data_pm[5] => ins[5].DATAIN
+data_pm[6] => ins[6].DATAIN
+data_pm[7] => ins[7].DATAIN
+ins[0] <= data_pm[0].DB_MAX_OUTPUT_PORT_TYPE
+ins[1] <= data_pm[1].DB_MAX_OUTPUT_PORT_TYPE
+ins[2] <= data_pm[2].DB_MAX_OUTPUT_PORT_TYPE
+ins[3] <= data_pm[3].DB_MAX_OUTPUT_PORT_TYPE
+ins[4] <= data_pm[4].DB_MAX_OUTPUT_PORT_TYPE
+ins[5] <= data_pm[5].DB_MAX_OUTPUT_PORT_TYPE
+ins[6] <= data_pm[6].DB_MAX_OUTPUT_PORT_TYPE
+ins[7] <= data_pm[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
