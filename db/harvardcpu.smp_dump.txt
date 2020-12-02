@@ -1,0 +1,8 @@
+
+State Machine - |harvardcpu|cu:controlunit|state
+Name state.0100 state.0011 state.0010 state.0001 state.1111 
+state.0001 0 0 0 0 0 
+state.0010 0 0 1 1 0 
+state.0011 0 1 0 1 0 
+state.0100 1 0 0 1 0 
+state.1111 0 0 0 1 1 

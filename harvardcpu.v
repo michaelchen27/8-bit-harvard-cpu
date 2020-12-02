@@ -17,7 +17,7 @@ inout [7:0] data_memory;
 
 // Wire internal
 wire [7:0] ins_alu, in1, in2, res; //alu <-> cu
-wire [7:0] commandmemory, datamemory, addrmemory; //memory interface <-> cu
+wire [7:0] cmd_memory, data_memory, addr_memory; //memory interface <-> cu
 wire [7:0] pc_wire, instruction_wire ; //program memory interface <-> cu
 
 cu controlunit(
@@ -27,9 +27,9 @@ cu controlunit(
     ins_alu, in1, in2, result               // ALU
 );
 
-//alu aritmetik(ins_alu, in1, in2, res, clk); //ke cu
+alu arithmeticlogicunit(op,in1, in2, result, clk);
 
-//memoryint memint(commandmemory, cmd_memory, addrmemory, addr_memory, datamemory, data_memory, clk);
+memoryint memoryinterface(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 
 //progmemint progint(clk, addr_program, pc_wire, data_program, instruction_wire);
 
