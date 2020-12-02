@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Wed Dec 02 11:16:51 2020
+Wed Dec 02 11:31:28 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -49,7 +49,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec 02 11:16:51 2020       ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 02 11:31:28 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
@@ -375,7 +375,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Dec 02 11:16:40 2020
+    Info: Processing started: Wed Dec 02 11:31:17 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -408,6 +408,10 @@ Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(32): created i
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "pc" File: D:/harvardcpu/harvardcpu.v Line: 34
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "data_pm" File: D:/harvardcpu/harvardcpu.v Line: 34
 Warning (10236): Verilog HDL Implicit Net warning at harvardcpu.v(34): created implicit net for "ins" File: D:/harvardcpu/harvardcpu.v Line: 34
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(7): created implicit net for "cmd_in" File: D:/harvardcpu/cpu_tb.v Line: 7
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(7): created implicit net for "addr_in" File: D:/harvardcpu/cpu_tb.v Line: 7
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(7): created implicit net for "data" File: D:/harvardcpu/cpu_tb.v Line: 7
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(8): created implicit net for "data_out" File: D:/harvardcpu/cpu_tb.v Line: 8
 Info (12127): Elaborating entity "harvardcpu" for the top level hierarchy
 Info (12128): Elaborating entity "cu" for hierarchy "cu:controlunit" File: D:/harvardcpu/harvardcpu.v Line: 28
 Warning (10272): Verilog HDL Case Statement warning at cu.v(129): case item expression covers a value already covered by a previous case item File: D:/harvardcpu/cu.v Line: 129
@@ -438,10 +442,10 @@ Info (21057): Implemented 158 device resources after synthesis - the final resou
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
     Info (21061): Implemented 117 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
-    Info: Peak virtual memory: 4825 megabytes
-    Info: Processing ended: Wed Dec 02 11:16:51 2020
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Wed Dec 02 11:31:28 2020
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Total CPU time (on all processors): 00:00:24
 
 
