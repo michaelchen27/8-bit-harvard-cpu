@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition"
 
-// DATE "12/02/2020 11:32:28"
+// DATE "12/05/2020 11:24:26"
 
 // 
 // Device: Altera 5CGXFC7C7F23C8 Package FBGA484
@@ -40,7 +40,7 @@ input 	[7:0] data_program;
 output 	[7:0] addr_memory;
 output 	[7:0] addr_program;
 output 	[7:0] cmd_memory;
-output 	[7:0] data_memory;
+inout 	[7:0] data_memory;
 
 // Design Ports Information
 // addr_memory[0]	=>  Location: PIN_P22,	 I/O Standard: 2.5 V,	 Current Strength: Default

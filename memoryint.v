@@ -7,7 +7,7 @@ module memoryint(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 	
 	inout [7:0] data_cu, data_dm;   // write data_dm output, data_cu input 
 	
-	reg [7:0] tempData_dm, tempData_cu;
+	reg [7:0] tempData_dm, tempData_cu; //to drive the input and output.
 
 	assign data_cu = cmd_in? 8'bzzzzzzzz : tempData_cu ; //Kalau Read, data_cu jadi output untuk nerusin tempData_cu
 	assign data_dm = cmd_in? tempData_dm : 8'bzzzzzzzz ; //Kalau Write, data_dm jadi output untuk nerusin tempData_dm.
@@ -25,6 +25,6 @@ module memoryint(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 				end		
 	end
 	
-	assign cmd_out = cmd_in;
-	assign addr_out = addr_in;
+	assign cmd_out = cmd_in; //nerusin CMD.
+	assign addr_out = addr_in; //nerusin address.
 endmodule

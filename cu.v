@@ -1,5 +1,5 @@
 module cu(
-    clk,                                    // Clock source berasal dari luar
+    clk,			                             // Clock source berasal dari luar
     cmd_memory, addr_memory, data_memory,   // Data Memory
                 addr_program, data_program, // Program Memory
     ins_alu, in1, in2, result               // ALU
@@ -7,20 +7,20 @@ module cu(
 
 //Reg Type INPUT
 input clk;
-input[7:0] data_program, result;
+input[7:0] data_program, result; //data_program di diagram namanya "instruction"
 
 //Reg Type INOUT for Bidirectional port.
 inout[7:0] data_memory; //data_memory bolak balik.
 
 //Reg Type OUTPUT
-output[7:0] addr_memory, addr_program, cmd_memory, ins_alu, in1, in2;
+output[7:0] addr_program, addr_memory, cmd_memory, ins_alu, in1, in2; //addr_program di diagram namanya "data".
 
-reg[7:0] cir, operand1, operand2, pc; //Internal register, CIR = Current Instruction Register
-reg[7:0] temp_addr_memory, temp_cmd_memory, temp_data_memory; //Data Memory temporary register.
-reg[7:0] temp_ins_alu, temp_in1, temp_in2; //ALU temporary register
-reg[7:0] gpr[2:0];
-reg[3:0] state;
-reg data_in; //Flag untuk mengubah "data_memory" menjadi input atau output.
+reg[7:0] cir, operand1, operand2, pc; //Internal registers, CIR = Current Instruction Register.
+reg[7:0] temp_addr_memory, temp_cmd_memory, temp_data_memory; //Temporary registers for Data Memory.
+reg[7:0] temp_ins_alu, temp_in1, temp_in2; //Temporary registers for ALU.
+reg[7:0] gpr[2:0]; //General Purpose Register.
+reg[3:0] state; //Register to keep track the state.
+reg data_in; //Flag untuk mengubah "data_memory" yang bidirectional menjadi mode input atau output.
 
 initial
     begin
@@ -33,10 +33,9 @@ assign in1 = temp_in1;
 assign in2 = temp_in2;
 assign cmd_memory = temp_cmd_memory;
 assign addr_memory = temp_addr_memory;
-assign data_memory = (data_in) ? 8'bzzzzzzzz : temp_data_memory; 
-// z represents a high-impedance state.
-//It basically means that you aren't driving the output of the bus, so that something else can drive it.
-assign addr_program = pc;
+assign data_memory = (data_in) ? 8'bzzzzzzzz : temp_data_memory;  // z represents a high-impedance state.
+								//It basically means that you aren't driving the output of the bus, so that something else can drive it.
+assign addr_program = pc; //PC to PMI via "data".
 
 always @(posedge clk)
     begin
@@ -44,10 +43,10 @@ always @(posedge clk)
         //STATE 1
         4'b0001:
             begin
-                cir = data_program;
+                cir = data_program; //Instruction masuk ke dalam Current Instruction Register.
                 state = 4'b0010; //state 2
             end
-				
+
         //STATE 2
         4'b0010:
             begin
@@ -103,7 +102,7 @@ always @(posedge clk)
 				else if(cir==8'b00000001|| cir==8'b00000010)
                     begin // ADD 	         SUB
                         operand1 = data_program;
-                        temp_ins_alu = cir;
+                        temp_ins_alu = cir; //CIR yang merupakan 1 atau 2 akan digunakan sebagai juga sebagai opcode oleh ALU.
                         temp_in1 = gpr[0][7:0];
                         temp_in2 = gpr[operand1[2:0]][7:0];
                         state = 4'b0100; //State 4

@@ -1,13 +1,13 @@
 module datamemory(clk, cmd_in, addr_in, data);
-	input [7:0] addr_in;
 	input clk, cmd_in;
+	input [7:0] addr_in;
 	inout [7:0] data;
 	
-	reg [7:0] dm [7:0];
+	reg[7:0] dm[7:0]; //Direct memory merupakan multi-dimensional array dengan dimensi 8x8.
 	
-	reg [7:0] tempData;
+	reg[7:0] tempData;
 		
-	always @(posedge clk)	
+	always @(posedge clk)
 		begin
 			if (cmd_in == 1'b0) //read
 				begin
@@ -16,7 +16,7 @@ module datamemory(clk, cmd_in, addr_in, data);
 				
 			else if (cmd_in == 1'b1) //write
 				begin	
-					tempData[7:0]=8'b00000000;
+					tempData[7:0] = 8'b00000000;
 					dm[addr_in] = data;
 				end
 					
