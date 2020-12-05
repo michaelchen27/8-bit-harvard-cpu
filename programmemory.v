@@ -31,18 +31,13 @@ module programmemory(addr_in, data_out);
 			pm[12] = 8'b00000010; // SUB
 			pm[13] = 8'b00000100; // R4
 
+			pm[14] = 8'b00000000; // NOP
 
-			pm[14] = 8'b00001001; // JNB
-			pm[15] = 8'b01100100; // Bit ke-6 dari R4
-			pm[16] = 8'b00010101; // Jump ke alamat LSHIFT (21)
-
-			pm[17] = 8'b00000000; // NOP
-
-			pm[18] = 8'b00000100; // MOV reg ke addr
-			pm[19] = 8'b00000001; // R1
-			pm[20] = 8'b00000011; // Addr 3
+			pm[15] = 8'b00000100; // MOV reg ke addr
+			pm[16] = 8'b00000001; // R1
+			pm[17] = 8'b00000011; // Addr 3
 			
-			pm[21] = 8'b00000111; // JMP
-			pm[22] = 8'b00100001; // HERE (33)		
+			pm[18] = 8'b00000111; // JMP
+			pm[19] = 8'b00100001; // HERE (33)		
 		end
 endmodule

@@ -1,5 +1,5 @@
 Fitter report for harvardcpu
-Sat Dec 05 21:25:01 2020
+Sat Dec 05 22:46:50 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -63,7 +63,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Sat Dec 05 21:25:01 2020       ;
+; Fitter Status                   ; Successful - Sat Dec 05 22:46:50 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
@@ -160,7 +160,7 @@ refer to the applicable agreement for further details.
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.5%      ;
 ;     Processor 3            ;   0.5%      ;
-;     Processor 4            ;   0.4%      ;
+;     Processor 4            ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -1477,7 +1477,7 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:09
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:10
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
@@ -1490,7 +1490,7 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
-Info (11888): Total time spent on timing analysis during the Fitter is 0.50 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.47 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1498,8 +1498,8 @@ Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Info (144001): Generated suppressed messages file D:/harvardcpu/output_files/harvardcpu.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 6777 megabytes
-    Info: Processing ended: Sat Dec 05 21:25:02 2020
+    Info: Peak virtual memory: 6710 megabytes
+    Info: Processing ended: Sat Dec 05 22:46:51 2020
     Info: Elapsed time: 00:00:38
     Info: Total CPU time (on all processors): 00:01:16
 
