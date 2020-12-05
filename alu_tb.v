@@ -1,4 +1,4 @@
-module alu_tb;
+module alu_tb();
 
 	reg clk;
 	reg [7:0] op, in1, in2;
@@ -6,8 +6,7 @@ module alu_tb;
 	
 	alu testbenchalu(op,in1, in2, result, clk);
 	
-always
-#1 clk=!clk;
+always #1 clk = ~clk;
 
 
 initial

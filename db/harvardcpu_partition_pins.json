@@ -68,6 +68,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "cmd_memory[0]",
+					"strict" : false
+				},
+				{
 					"name" : "data_memory[0]",
 					"strict" : false
 				},

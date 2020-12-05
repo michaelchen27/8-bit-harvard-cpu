@@ -33,8 +33,9 @@ assign in1 = temp_in1;
 assign in2 = temp_in2;
 assign cmd_memory = temp_cmd_memory;
 assign addr_memory = temp_addr_memory;
-assign data_memory = (data_in) ? 8'bzzzzzzzz : temp_data_memory;  // z represents a high-impedance state.
-								//It basically means that you aren't driving the output of the bus, so that something else can drive it.
+assign data_memory = (data_in) ? 8'bzzzzzzzz : temp_data_memory;  
+// z represents a high-impedance state.
+//It basically means that you aren't driving the output of the bus, so that something else can drive it.
 assign addr_program = pc; //PC to PMI via "data".
 
 always @(posedge clk)
@@ -81,14 +82,14 @@ always @(posedge clk)
         //STATE 3
         4'b0011:
             begin
-//   				else if(cir == 8'b00000011)
-//                   begin //MOV reg to reg
-//                       operand1 = data_program;
-//                       gpr[operand1[2:0]] = gpr[operand1[6:4]];
-//                       state = 4'b1111; //last state
-//                   end
+   				if(cir == 8'b00000011)
+                   begin //MOV reg to reg
+                       operand1 = data_program;
+                       gpr[operand1[2:0]][7:0] = gpr[operand1[6:4]][7:0];
+                       state = 4'b1111; //last state
+                   end
 
-                if(cir == 8'b00000111)
+                else if(cir == 8'b00000111)
                     begin //JMP
                        operand1 = data_program;
                        pc = operand1;
@@ -102,7 +103,7 @@ always @(posedge clk)
 				else if(cir==8'b00000001|| cir==8'b00000010)
                     begin // ADD 	         SUB
                         operand1 = data_program;
-                        temp_ins_alu = cir; //CIR yang merupakan 1 atau 2 akan digunakan sebagai juga sebagai opcode oleh ALU.
+                        temp_ins_alu = cir; //CIR yang merupakan 1 atau 2 (ADD or SUB) akan digunakan sebagai juga sebagai opcode oleh ALU.
                         temp_in1 = gpr[0][7:0];
                         temp_in2 = gpr[operand1[2:0]][7:0];
                         state = 4'b0100; //State 4
@@ -111,8 +112,8 @@ always @(posedge clk)
 				else if (cir == 8'b00000100 || cir == 8'b00000101 || cir == 8'b00000110 || cir == 8'b00001000 || cir == 8'b00001001)
                     begin //MOV Reg to Mem    MOV Mem to Reg     MOV Directly to Reg          JB                  JNB
                         operand1 = data_program;
-                        case(cir)
-                        8'b00001000: //JB
+								
+								if(cir == 8'b00001000) //JB
                             begin
                                 if(gpr[operand1[2:0]][operand1[6:4]])
                                 begin
@@ -125,7 +126,7 @@ always @(posedge clk)
                                 end
                             end
 
-                        8'b00001000: //JNB, ini tinggal dibalik dari JB
+								else if(cir == 8'b00001001) //JNB, kondisi ini tinggal dibalik dari JB
                             begin
                                 if(gpr[operand1[2:0]][operand1[6:4]]) //kalo ada bitnya, ke state akhir. 
                                 begin
@@ -137,8 +138,7 @@ always @(posedge clk)
                                     state = 4'b0100;
                                 end
                             end
-
-                        8'b00001000: //M0V Addr to Reg
+								else if(operand1 == 00000101) //M0V External Mem to Reg
                             begin
                                 temp_addr_memory = operand1;
                                 temp_cmd_memory = 8'b00000000;
@@ -147,12 +147,11 @@ always @(posedge clk)
                                 state = 4'b0100;
                             end
                         
-                        default:
+                        else
                             begin
                                 pc = pc+1'b1;
                                 state = 4'b0100; //State 4
                             end
-                        endcase
                     end                    
             end //end of state 3
 
