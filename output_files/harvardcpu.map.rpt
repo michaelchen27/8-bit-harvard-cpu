@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Sun Dec 06 10:22:05 2020
+Sun Dec 06 14:47:35 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -13,15 +13,16 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |harvardcpu|cu:controlunit|state
+  8. State Machine - |harvardcpu|cu:controlunit|next_state
   9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Port Connectivity Checks: "memoryint:memoryinterface"
- 13. Port Connectivity Checks: "cu:controlunit"
- 14. Post-Synthesis Netlist Statistics for Top Partition
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "datamemory:datamem"
+ 13. Port Connectivity Checks: "memoryint:memoryinterface"
+ 14. Port Connectivity Checks: "cu:controlunit"
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
 
 
 
@@ -47,14 +48,14 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Dec 06 10:22:05 2020       ;
+; Analysis & Synthesis Status     ; Successful - Sun Dec 06 14:47:35 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 110                                         ;
-; Total pins                      ; 41                                          ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 42                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -163,92 +164,124 @@ refer to the applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                               ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path ; Library ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
-; cu.v                             ; yes             ; User Verilog HDL File  ; D:/harvardcpu/cu.v           ;         ;
-; harvardcpu.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/harvardcpu.v   ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; D:/harvardcpu/alu.v          ;         ;
-; memoryint.v                      ; yes             ; User Verilog HDL File  ; D:/harvardcpu/memoryint.v    ;         ;
-; progmemint.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/progmemint.v   ;         ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                ;
++----------------------------------+-----------------+------------------------+-------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path  ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------+---------+
+; cu.v                             ; yes             ; User Verilog HDL File  ; D:/harvardcpu/cu.v            ;         ;
+; harvardcpu.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/harvardcpu.v    ;         ;
+; alu.v                            ; yes             ; User Verilog HDL File  ; D:/harvardcpu/alu.v           ;         ;
+; memoryint.v                      ; yes             ; User Verilog HDL File  ; D:/harvardcpu/memoryint.v     ;         ;
+; datamemory.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/datamemory.v    ;         ;
+; progmemint.v                     ; yes             ; User Verilog HDL File  ; D:/harvardcpu/progmemint.v    ;         ;
+; programmemory.v                  ; yes             ; User Verilog HDL File  ; D:/harvardcpu/programmemory.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------+---------+
 
 
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 87        ;
-;                                             ;           ;
-; Combinational ALUT usage for logic          ; 111       ;
-;     -- 7 input functions                    ; 6         ;
-;     -- 6 input functions                    ; 49        ;
-;     -- 5 input functions                    ; 18        ;
-;     -- 4 input functions                    ; 11        ;
-;     -- <=3 input functions                  ; 27        ;
-;                                             ;           ;
-; Dedicated logic registers                   ; 110       ;
-;                                             ;           ;
-; I/O pins                                    ; 41        ;
-;                                             ;           ;
-; Total DSP Blocks                            ; 0         ;
-;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 110       ;
-; Total fan-out                               ; 976       ;
-; Average fan-out                             ; 3.14      ;
-+---------------------------------------------+-----------+
++----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                          ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 0                      ;
+;                                             ;                        ;
+; Combinational ALUT usage for logic          ; 0                      ;
+;     -- 7 input functions                    ; 0                      ;
+;     -- 6 input functions                    ; 0                      ;
+;     -- 5 input functions                    ; 0                      ;
+;     -- 4 input functions                    ; 0                      ;
+;     -- <=3 input functions                  ; 0                      ;
+;                                             ;                        ;
+; Dedicated logic registers                   ; 0                      ;
+;                                             ;                        ;
+; I/O pins                                    ; 42                     ;
+;                                             ;                        ;
+; Total DSP Blocks                            ; 0                      ;
+;                                             ;                        ;
+; Maximum fan-out node                        ; addr_program[0]~output ;
+; Maximum fan-out                             ; 1                      ;
+; Total fan-out                               ; 50                     ;
+; Average fan-out                             ; 0.54                   ;
++---------------------------------------------+------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                          ;
-+--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
-; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name ; Library Name ;
-+--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
-; |harvardcpu                    ; 111 (8)             ; 110 (0)                   ; 0                 ; 0          ; 41   ; 0            ; |harvardcpu                           ; harvardcpu  ; work         ;
-;    |alu:arithmeticlogicunit|   ; 2 (2)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|alu:arithmeticlogicunit   ; alu         ; work         ;
-;    |cu:controlunit|            ; 101 (101)           ; 86 (86)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|cu:controlunit            ; cu          ; work         ;
-;    |memoryint:memoryinterface| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|memoryint:memoryinterface ; memoryint   ; work         ;
-+--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |harvardcpu                ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 42   ; 0            ; |harvardcpu         ; harvardcpu  ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+-----------------------------------------------------------------------------+
-; State Machine - |harvardcpu|cu:controlunit|state                            ;
-+------------+------------+------------+------------+------------+------------+
-; Name       ; state.0100 ; state.0011 ; state.0010 ; state.0001 ; state.1111 ;
-+------------+------------+------------+------------+------------+------------+
-; state.0001 ; 0          ; 0          ; 0          ; 0          ; 0          ;
-; state.0010 ; 0          ; 0          ; 1          ; 1          ; 0          ;
-; state.0011 ; 0          ; 1          ; 0          ; 1          ; 0          ;
-; state.0100 ; 1          ; 0          ; 0          ; 1          ; 0          ;
-; state.1111 ; 0          ; 0          ; 0          ; 1          ; 1          ;
-+------------+------------+------------+------------+------------+------------+
++-------------------------------------------------------------------------------------------------------+
+; State Machine - |harvardcpu|cu:controlunit|next_state                                                 ;
++-------------------+---------------+---------------+---------------+---------------+-------------------+
+; Name              ; next_state.S4 ; next_state.S3 ; next_state.S2 ; next_state.S1 ; next_state.S_Last ;
++-------------------+---------------+---------------+---------------+---------------+-------------------+
+; next_state.S1     ; 0             ; 0             ; 0             ; 0             ; 0                 ;
+; next_state.S2     ; 0             ; 0             ; 1             ; 1             ; 0                 ;
+; next_state.S3     ; 0             ; 1             ; 0             ; 1             ; 0                 ;
+; next_state.S4     ; 1             ; 0             ; 0             ; 1             ; 0                 ;
+; next_state.S_Last ; 0             ; 0             ; 0             ; 1             ; 1                 ;
++-------------------+---------------+---------------+---------------+---------------+-------------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; cu:controlunit|data_in                ; Lost fanout        ;
-; cu:controlunit|state~7                ; Lost fanout        ;
-; cu:controlunit|state~8                ; Lost fanout        ;
-; cu:controlunit|state~9                ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
-+---------------------------------------+--------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++---------------------------------------------+-----------------------------------------------+
+; Register name                               ; Reason for Removal                            ;
++---------------------------------------------+-----------------------------------------------+
+; datamemory:datamem|tempData[2..7]           ; Stuck at GND due to stuck port data_in        ;
+; memoryint:memoryinterface|tempData_cu[0..7] ; Lost fanout                                   ;
+; memoryint:memoryinterface|tempData_dm[0..7] ; Stuck at GND due to stuck port clock_enable   ;
+; datamemory:datamem|tempData[1]              ; Stuck at GND due to stuck port data_in        ;
+; cu:controlunit|temp_addr_memory[0..7]       ; Lost fanout                                   ;
+; cu:controlunit|operand1[1..7]               ; Merged with cu:controlunit|operand1[0]        ;
+; cu:controlunit|temp_cmd_memory[2..7]        ; Merged with cu:controlunit|temp_cmd_memory[1] ;
+; cu:controlunit|cir[1..7]                    ; Merged with cu:controlunit|cir[0]             ;
+; cu:controlunit|temp_data_memory[0..7]       ; Stuck at GND due to stuck port clock_enable   ;
+; cu:controlunit|temp_cmd_memory[0]           ; Merged with cu:controlunit|temp_cmd_memory[1] ;
+; cu:controlunit|operand1[0]                  ; Lost fanout                                   ;
+; datamemory:datamem|tempData[0]              ; Stuck at GND due to stuck port data_in        ;
+; cu:controlunit|temp_cmd_memory[1]           ; Stuck at GND due to stuck port data_in        ;
+; cu:controlunit|data_in                      ; Stuck at VCC due to stuck port data_in        ;
+; cu:controlunit|cir[0]                       ; Stuck at GND due to stuck port data_in        ;
+; cu:controlunit|next_state~7                 ; Lost fanout                                   ;
+; cu:controlunit|next_state~8                 ; Lost fanout                                   ;
+; cu:controlunit|next_state~9                 ; Lost fanout                                   ;
+; cu:controlunit|next_state.S_Last            ; Lost fanout                                   ;
+; cu:controlunit|next_state.S1                ; Lost fanout                                   ;
+; cu:controlunit|next_state.S2                ; Lost fanout                                   ;
+; cu:controlunit|next_state.S3                ; Lost fanout                                   ;
+; cu:controlunit|next_state.S4                ; Lost fanout                                   ;
+; Total Number of Removed Registers = 73      ;                                               ;
++---------------------------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                            ;
++------------------------------------------+--------------------------------+------------------------------------------------------------+
+; Register name                            ; Reason for Removal             ; Registers Removed due to This Register                     ;
++------------------------------------------+--------------------------------+------------------------------------------------------------+
+; cu:controlunit|next_state~7              ; Lost Fanouts                   ; cu:controlunit|next_state.S1, cu:controlunit|next_state.S4 ;
+; memoryint:memoryinterface|tempData_dm[0] ; Stuck at GND                   ; datamemory:datamem|tempData[0]                             ;
+;                                          ; due to stuck port clock_enable ;                                                            ;
+; cu:controlunit|temp_data_memory[7]       ; Stuck at GND                   ; cu:controlunit|operand1[0]                                 ;
+;                                          ; due to stuck port clock_enable ;                                                            ;
+; cu:controlunit|next_state~8              ; Lost Fanouts                   ; cu:controlunit|next_state.S_Last                           ;
+; cu:controlunit|next_state~9              ; Lost Fanouts                   ; cu:controlunit|next_state.S2                               ;
++------------------------------------------+--------------------------------+------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -256,28 +289,23 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 110   ;
-; Number of registers using Synchronous Clear  ; 16    ;
-; Number of registers using Synchronous Load   ; 8     ;
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 104   ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|temp_addr_memory[4] ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|cir[7]              ;
-; 11:1               ; 8 bits    ; 56 LEs        ; 0 LEs                ; 56 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|pc[1]               ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|Selector40          ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|gpr                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|temp_in1            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datamemory:datamem"                                                                                                                                                               ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                                                          ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; cmd_in ; Input ; Warning  ; Input port expression (8 bits) is wider than the input port (1 bits) it drives.  The 7 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -289,13 +317,16 @@ Encoding Type:  One-Hot
 +--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cu:controlunit"                                                                                 ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port             ; Type   ; Severity ; Details                                                                             ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; cmd_memory[7..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cu:controlunit"                                                                                                                                                                          ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                                                                          ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; rst          ; Input  ; Warning  ; Input port expression (8 bits) is wider than the input port (1 bits) it drives.  The 7 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; addr_program ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                              ;
+; in2          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                              ;
+; result       ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                     ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -303,28 +334,14 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 110                         ;
-;     ENA               ; 80                          ;
-;     ENA SCLR          ; 16                          ;
-;     ENA SLD           ; 8                           ;
-;     plain             ; 6                           ;
-; arriav_io_obuf        ; 8                           ;
-; arriav_lcell_comb     ; 112                         ;
-;     arith             ; 8                           ;
-;         1 data inputs ; 8                           ;
-;     extend            ; 6                           ;
-;         7 data inputs ; 6                           ;
-;     normal            ; 98                          ;
+; arriav_io_obuf        ; 16                          ;
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
 ;         0 data inputs ; 1                           ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 15                          ;
-;         4 data inputs ; 11                          ;
-;         5 data inputs ; 18                          ;
-;         6 data inputs ; 49                          ;
-; boundary_port         ; 41                          ;
+; boundary_port         ; 42                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.45                        ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
 +-----------------------+-----------------------------+
 
 
@@ -343,7 +360,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Dec 06 10:21:53 2020
+    Info: Processing started: Sun Dec 06 14:47:25 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -365,50 +382,107 @@ Info (12021): Found 1 design units, including 1 entities, in source file cpu_tb.
     Info (12023): Found entity 1: cpu_tb File: D:/harvardcpu/cpu_tb.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.v
     Info (12023): Found entity 1: alu_tb File: D:/harvardcpu/alu_tb.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(8): created implicit net for "data_program" File: D:/harvardcpu/cpu_tb.v Line: 8
-Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(9): created implicit net for "addr_memory" File: D:/harvardcpu/cpu_tb.v Line: 9
-Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(9): created implicit net for "addr_program" File: D:/harvardcpu/cpu_tb.v Line: 9
-Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(9): created implicit net for "cmd_memory" File: D:/harvardcpu/cpu_tb.v Line: 9
-Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(11): created implicit net for "data_memory" File: D:/harvardcpu/cpu_tb.v Line: 11
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(9): created implicit net for "data_program" File: D:/harvardcpu/cpu_tb.v Line: 9
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(10): created implicit net for "addr_memory" File: D:/harvardcpu/cpu_tb.v Line: 10
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(10): created implicit net for "addr_program" File: D:/harvardcpu/cpu_tb.v Line: 10
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(10): created implicit net for "cmd_memory" File: D:/harvardcpu/cpu_tb.v Line: 10
+Warning (10236): Verilog HDL Implicit Net warning at cpu_tb.v(12): created implicit net for "data_memory" File: D:/harvardcpu/cpu_tb.v Line: 12
 Info (12127): Elaborating entity "harvardcpu" for the top level hierarchy
-Info (12128): Elaborating entity "cu" for hierarchy "cu:controlunit" File: D:/harvardcpu/harvardcpu.v Line: 22
-Warning (10030): Net "temp_in2" at cu.v(20) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/cu.v Line: 20
-Info (12128): Elaborating entity "alu" for hierarchy "alu:arithmeticlogicunit" File: D:/harvardcpu/harvardcpu.v Line: 24
-Info (12128): Elaborating entity "memoryint" for hierarchy "memoryint:memoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 26
-Info (12128): Elaborating entity "progmemint" for hierarchy "progmemint:progint" File: D:/harvardcpu/harvardcpu.v Line: 28
-Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "cu:controlunit|gpr" is uninferred due to inappropriate RAM size File: D:/harvardcpu/cu.v Line: 21
-Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13048): Converted tri-state node "datamemory[7]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[6]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[5]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[4]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[3]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[2]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[1]" into a selector File: D:/harvardcpu/cu.v Line: 171
-    Warning (13048): Converted tri-state node "datamemory[0]" into a selector File: D:/harvardcpu/cu.v Line: 171
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "cu" for hierarchy "cu:controlunit" File: D:/harvardcpu/harvardcpu.v Line: 23
+Warning (10030): Net "temp_in2" at cu.v(29) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/cu.v Line: 29
+Info (10018): Can't recognize finite state machine "state" because it has a complex reset state
+Info (12128): Elaborating entity "alu" for hierarchy "alu:arithmeticlogicunit" File: D:/harvardcpu/harvardcpu.v Line: 25
+Info (12128): Elaborating entity "memoryint" for hierarchy "memoryint:memoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 27
+Info (12128): Elaborating entity "datamemory" for hierarchy "datamemory:datamem" File: D:/harvardcpu/harvardcpu.v Line: 28
+Warning (10230): Verilog HDL assignment warning at datamemory.v(20): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 20
+Warning (10230): Verilog HDL assignment warning at datamemory.v(29): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 29
+Warning (10230): Verilog HDL assignment warning at datamemory.v(30): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 30
+Warning (10230): Verilog HDL assignment warning at datamemory.v(31): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 31
+Warning (10230): Verilog HDL assignment warning at datamemory.v(32): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 32
+Info (12128): Elaborating entity "progmemint" for hierarchy "progmemint:programinterface" File: D:/harvardcpu/harvardcpu.v Line: 30
+Info (12128): Elaborating entity "programmemory" for hierarchy "programmemory:progmem" File: D:/harvardcpu/harvardcpu.v Line: 31
+Warning (10030): Net "pm.data_a" at programmemory.v(6) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/programmemory.v Line: 6
+Warning (10030): Net "pm.waddr_a" at programmemory.v(6) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/programmemory.v Line: 6
+Warning (10030): Net "pm.we_a" at programmemory.v(6) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/programmemory.v Line: 6
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "ins_alu[7]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[6]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[5]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[4]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[3]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[2]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[1]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "ins_alu[0]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 16
+    Warning (12110): Net "commandmemory[7]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[6]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[5]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[4]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[3]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[2]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[1]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+    Warning (12110): Net "commandmemory[0]" is missing source, defaulting to GND File: D:/harvardcpu/harvardcpu.v Line: 17
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276004): RAM logic "datamemory:datamem|dm" is uninferred due to inappropriate RAM size File: D:/harvardcpu/datamemory.v Line: 6
+    Info (276004): RAM logic "cu:controlunit|gpr" is uninferred due to inappropriate RAM size File: D:/harvardcpu/cu.v Line: 30
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "D:/harvardcpu/db/harvardcpu.ram0_datamemory_1d545f57.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13032): The following tri-state nodes are fed by constants
+    Warning (13033): The pin "data_memory[0]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[1]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[2]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[3]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[4]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[5]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[6]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+    Warning (13033): The pin "data_memory[7]" is fed by GND File: D:/harvardcpu/harvardcpu.v Line: 13
+Warning (13027): Removed fan-outs from the following always-disabled I/O buffers
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[0]" to the node "data_memory[0]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[1]" to the node "data_memory[1]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[2]" to the node "data_memory[2]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[3]" to the node "data_memory[3]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[4]" to the node "data_memory[4]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[5]" to the node "data_memory[5]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[6]" to the node "data_memory[6]" File: D:/harvardcpu/memoryint.v Line: 8
+    Warning (13028): Removed fan-out from the always-disabled I/O buffer "memoryint:memoryinterface|data_dm[7]" to the node "data_memory[7]" File: D:/harvardcpu/memoryint.v Line: 8
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "cmd_memory[1]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[2]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[3]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[4]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[5]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[6]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-    Warning (13410): Pin "cmd_memory[7]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 10
-Info (286030): Timing-Driven Synthesis is running
-Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+    Warning (13410): Pin "addr_memory[0]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[1]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[2]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[3]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[4]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[5]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[6]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "addr_memory[7]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[0]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[1]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[2]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[3]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[4]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[5]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[6]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+    Warning (13410): Pin "cmd_memory[7]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
+Info (17049): 25 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 238 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
+Warning (21074): Design contains 10 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "rst" File: D:/harvardcpu/harvardcpu.v Line: 8
+    Warning (15610): No output dependent on input pin "data_program[0]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[1]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[2]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[3]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[4]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[5]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[6]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "data_program[7]" File: D:/harvardcpu/harvardcpu.v Line: 9
+    Warning (15610): No output dependent on input pin "clk" File: D:/harvardcpu/harvardcpu.v Line: 7
+Info (21057): Implemented 42 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 197 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
-    Info: Peak virtual memory: 4822 megabytes
-    Info: Processing ended: Sun Dec 06 10:22:05 2020
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:25
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
+    Info: Peak virtual memory: 4800 megabytes
+    Info: Processing ended: Sun Dec 06 14:47:35 2020
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
 
 

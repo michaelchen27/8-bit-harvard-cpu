@@ -19,7 +19,6 @@ module datamemory(clk, cmd_in, addr_in, data);
 					tempData[7:0] = 8'b00000000;
 					dm[addr_in] = data;
 				end
-					
 		end
 
 	assign data = tempData;
