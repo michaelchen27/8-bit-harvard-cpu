@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Sun Dec 06 14:47:35 2020
+Sun Dec 06 17:48:51 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -48,7 +48,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Dec 06 14:47:35 2020       ;
+; Analysis & Synthesis Status     ; Successful - Sun Dec 06 17:48:51 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
@@ -360,7 +360,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Sun Dec 06 14:47:25 2020
+    Info: Processing started: Sun Dec 06 17:48:41 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -395,6 +395,7 @@ Info (12128): Elaborating entity "alu" for hierarchy "alu:arithmeticlogicunit" F
 Info (12128): Elaborating entity "memoryint" for hierarchy "memoryint:memoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 27
 Info (12128): Elaborating entity "datamemory" for hierarchy "datamemory:datamem" File: D:/harvardcpu/harvardcpu.v Line: 28
 Warning (10230): Verilog HDL assignment warning at datamemory.v(20): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 20
+Warning (10230): Verilog HDL assignment warning at datamemory.v(28): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 28
 Warning (10230): Verilog HDL assignment warning at datamemory.v(29): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 29
 Warning (10230): Verilog HDL assignment warning at datamemory.v(30): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 30
 Warning (10230): Verilog HDL assignment warning at datamemory.v(31): truncated value with size 8 to match size of target (1) File: D:/harvardcpu/datamemory.v Line: 31
@@ -479,10 +480,10 @@ Info (21057): Implemented 42 device resources after synthesis - the final resour
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 80 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 81 warnings
     Info: Peak virtual memory: 4800 megabytes
-    Info: Processing ended: Sun Dec 06 14:47:35 2020
+    Info: Processing ended: Sun Dec 06 17:48:51 2020
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Total CPU time (on all processors): 00:00:25
 
 

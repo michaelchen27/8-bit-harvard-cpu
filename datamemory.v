@@ -29,5 +29,6 @@ module datamemory(clk, cmd_in, addr_in, data);
 		dm[1] = 8'b00000001;
 		dm[2] = 8'b00000010;
 		dm[3] = 8'b00000011;
+		dm[4] = 8'b00000100;
 	end
 endmodule

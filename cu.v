@@ -27,7 +27,7 @@ output[7:0] addr_program, addr_memory, cmd_memory, ins_alu, in1, in2; //addr_pro
 reg[7:0] cir, operand1, operand2, pc; //Internal registers, CIR = Current Instruction Register.
 reg[7:0] temp_addr_memory, temp_cmd_memory, temp_data_memory; //Temporary registers for Data Memory.
 reg[7:0] temp_ins_alu, temp_in1, temp_in2; //Temporary registers for ALU.
-reg[7:0] gpr[2:0]; //General Purpose Register.
+reg[7:0] gpr[2:0]; //General Purpose Register. GPR digunakan untuk mengakses registers. 0[000] 0[000]. GPR[0] digunakan untuk Acc.
 reg[3:0] state; //Register to keep track the state.
 reg[3:0] next_state;
 reg data_in; //Flag untuk mengubah "data_memory" yang bidirectional menjadi mode input atau output.
@@ -101,7 +101,7 @@ always @(posedge clk)
         S3:
             begin
    				if(cir == 8'b00000011)
-                   begin //MOV reg to reg
+                   begin //MOV reg to reg	
                        operand1 = data_program;
                        gpr[operand1[2:0]][7:0] = gpr[operand1[6:4]][7:0];
                        next_state = S_Last; //last state
@@ -122,14 +122,15 @@ always @(posedge clk)
                     begin // ADD 	         SUB
                         operand1 = data_program;
                         temp_ins_alu = cir; //CIR yang merupakan 1 atau 2 (ADD or SUB) akan digunakan sebagai juga sebagai opcode oleh ALU.
-                        temp_in1 = gpr[0][7:0];
+                        temp_in1 = gpr[0][7:0]; //Accumulator
                         temp_in2 = gpr[operand1[2:0]][7:0];
                         next_state = S4; //State 4
                     end
 
 				else if (cir == 8'b00000100 || cir == 8'b00000101 || cir == 8'b00000110 || cir == 8'b00001000 || cir == 8'b00001001)
                     begin //MOV Reg to Mem    MOV Mem to Reg     MOV Directly to Reg          JB                  JNB
-                        operand1 = data_program;
+                        
+								operand1 = data_program;
 								
                             if(cir == 8'b00001000) //JB
                             begin
@@ -156,7 +157,7 @@ always @(posedge clk)
                                     next_state = S4;
                                 end
                             end
-								else if(operand1 == 00000101) //M0V Mem to Reg
+								else if(cir == 8'b00000101) //M0V Mem to Reg
                             begin
                                 temp_addr_memory = operand1;
                                 temp_cmd_memory = 8'b00000000; //read dari memory
@@ -165,7 +166,7 @@ always @(posedge clk)
                                 next_state = S4;
                             end
                         
-                        else
+                        else //Butuh second operand, move on the next state.
                             begin
                                 pc = pc+1'b1;
                                 next_state = S4;
@@ -179,7 +180,7 @@ always @(posedge clk)
             begin
                 if(cir==8'b00000001|| cir==8'b00000010)
                     begin // ADD              SUB
-                        gpr[0][7:0] = result;
+                        gpr[0][7:0] = result; //Put result in Acc.
                         next_state = S_Last; //Last State
                     end
                 
@@ -199,14 +200,14 @@ always @(posedge clk)
 
                             8'b00000101: //MOV Mem to Reg
                             begin
-                                operand2 = data_program;
-                                gpr[operand2[2:0]] = data_memory;
+                                operand2 = data_program; //register N found, masukkin ke operand2.
+                                gpr[operand2[2:0]] = data_memory; //Data dari memory masukkin ke Register N.
                                 next_state = S_Last;
                             end
 
-                            8'b00000110: //MOV directy to reg
+                            8'b00000110: //MOV directly to reg
                             begin
-                                operand2 = data_program;
+                                operand2 = data_program; //register N found
                                 gpr[operand2[2:0]] = operand1;
                                 next_state = S_Last;
                             end

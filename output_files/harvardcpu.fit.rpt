@@ -1,5 +1,5 @@
 Fitter report for harvardcpu
-Sun Dec 06 14:48:06 2020
+Sun Dec 06 17:49:22 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -58,7 +58,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Sun Dec 06 14:48:06 2020       ;
+; Fitter Status                   ; Successful - Sun Dec 06 17:49:22 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
@@ -1311,7 +1311,7 @@ Info (184021): Fitter periphery placement operations ending: elapsed time is 00:
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:08
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:09
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'harvardcpu.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
 Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
@@ -1350,9 +1350,9 @@ Warning (169064): Following 8 pins have no output enable or a GND or VCC output 
 Info (144001): Generated suppressed messages file D:/harvardcpu/output_files/harvardcpu.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 7 warnings
     Info: Peak virtual memory: 6676 megabytes
-    Info: Processing ended: Sun Dec 06 14:48:07 2020
+    Info: Processing ended: Sun Dec 06 17:49:23 2020
     Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:56
+    Info: Total CPU time (on all processors): 00:00:55
 
 
 +----------------------------+
