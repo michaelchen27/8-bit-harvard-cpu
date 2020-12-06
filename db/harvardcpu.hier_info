@@ -8,38 +8,38 @@ data_program[4] => data_program[4].IN1
 data_program[5] => data_program[5].IN1
 data_program[6] => data_program[6].IN1
 data_program[7] => data_program[7].IN1
-addr_memory[0] << cu:controlunit.port2
-addr_memory[1] << cu:controlunit.port2
-addr_memory[2] << cu:controlunit.port2
-addr_memory[3] << cu:controlunit.port2
-addr_memory[4] << cu:controlunit.port2
-addr_memory[5] << cu:controlunit.port2
-addr_memory[6] << cu:controlunit.port2
-addr_memory[7] << cu:controlunit.port2
-addr_program[0] << cu:controlunit.port4
-addr_program[1] << cu:controlunit.port4
-addr_program[2] << cu:controlunit.port4
-addr_program[3] << cu:controlunit.port4
-addr_program[4] << cu:controlunit.port4
-addr_program[5] << cu:controlunit.port4
-addr_program[6] << cu:controlunit.port4
-addr_program[7] << cu:controlunit.port4
-cmd_memory[0] << cu:controlunit.port1
-cmd_memory[1] << cu:controlunit.port1
-cmd_memory[2] << cu:controlunit.port1
-cmd_memory[3] << cu:controlunit.port1
-cmd_memory[4] << cu:controlunit.port1
-cmd_memory[5] << cu:controlunit.port1
-cmd_memory[6] << cu:controlunit.port1
-cmd_memory[7] << cu:controlunit.port1
-data_memory[0] <> cu:controlunit.port3
-data_memory[1] <> cu:controlunit.port3
-data_memory[2] <> cu:controlunit.port3
-data_memory[3] <> cu:controlunit.port3
-data_memory[4] <> cu:controlunit.port3
-data_memory[5] <> cu:controlunit.port3
-data_memory[6] <> cu:controlunit.port3
-data_memory[7] <> cu:controlunit.port3
+addr_memory[0] <= memoryint:memoryinterface.port3
+addr_memory[1] <= memoryint:memoryinterface.port3
+addr_memory[2] <= memoryint:memoryinterface.port3
+addr_memory[3] <= memoryint:memoryinterface.port3
+addr_memory[4] <= memoryint:memoryinterface.port3
+addr_memory[5] <= memoryint:memoryinterface.port3
+addr_memory[6] <= memoryint:memoryinterface.port3
+addr_memory[7] <= memoryint:memoryinterface.port3
+addr_program[0] <= progmemint:progint.port1
+addr_program[1] <= progmemint:progint.port1
+addr_program[2] <= progmemint:progint.port1
+addr_program[3] <= progmemint:progint.port1
+addr_program[4] <= progmemint:progint.port1
+addr_program[5] <= progmemint:progint.port1
+addr_program[6] <= progmemint:progint.port1
+addr_program[7] <= progmemint:progint.port1
+cmd_memory[0] <= memoryint:memoryinterface.port1
+cmd_memory[1] <= memoryint:memoryinterface.port1
+cmd_memory[2] <= memoryint:memoryinterface.port1
+cmd_memory[3] <= memoryint:memoryinterface.port1
+cmd_memory[4] <= memoryint:memoryinterface.port1
+cmd_memory[5] <= memoryint:memoryinterface.port1
+cmd_memory[6] <= memoryint:memoryinterface.port1
+cmd_memory[7] <= memoryint:memoryinterface.port1
+data_memory[0] <> memoryint:memoryinterface.port5
+data_memory[1] <> memoryint:memoryinterface.port5
+data_memory[2] <> memoryint:memoryinterface.port5
+data_memory[3] <> memoryint:memoryinterface.port5
+data_memory[4] <> memoryint:memoryinterface.port5
+data_memory[5] <> memoryint:memoryinterface.port5
+data_memory[6] <> memoryint:memoryinterface.port5
+data_memory[7] <> memoryint:memoryinterface.port5
 
 
 |harvardcpu|cu:controlunit
@@ -443,7 +443,7 @@ clk => tempData_cu[6].CLK
 clk => tempData_cu[7].CLK
 
 
-|harvardcpu|progmemint:programmemoryinterface
+|harvardcpu|progmemint:progint
 clk => ~NO_FANOUT~
 addr_out[0] <= pc[0].DB_MAX_OUTPUT_PORT_TYPE
 addr_out[1] <= pc[1].DB_MAX_OUTPUT_PORT_TYPE

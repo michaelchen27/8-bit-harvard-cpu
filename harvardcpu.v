@@ -13,20 +13,19 @@ inout [7:0] data_memory;
 
 // Wire internal
 wire [7:0] ins_alu, in1, in2, res; //alu <-> cu
-wire [7:0] cmd_memory, data_memory, addr_memory; //memory interface <-> cu
+wire [7:0] commandmemory, datamemory, addrmemory; //memory interface <-> cu
 wire [7:0] pc_wire, instruction_wire; //program memory interface <-> cu
 
-cu controlunit(
-    clk,                                    // Clock source berasal dari luar
-    cmd_memory, addr_memory, data_memory,   // Data Memory
-                addr_program, data_program, // Program Memory
-    ins_alu, in1, in2, result               // ALU
-);
+cu controlunit(clk, 
+				commandmemory, addrmemory, datamemory, 	//datamemory
+				pc_wire, instruction_wire, 				//program memory 
+				ins_alu, in1, in2, res); 		
 
-alu arithmeticlogicunit(op,in1, in2, result, clk);
+alu arithmeticlogicunit(ins_alu, in1, in2, res, clk); //ke cu
 
-memoryint memoryinterface(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
+memoryint memoryinterface(commandmemory, cmd_memory, addrmemory, addr_memory, datamemory, data_memory, clk);
 
-progmemint programmemoryinterface(clk, addr_out, pc, data_pm, ins);
+progmemint programinterface(clk, addr_program, pc_wire, data_program, instruction_wire);
+
 
 endmodule
