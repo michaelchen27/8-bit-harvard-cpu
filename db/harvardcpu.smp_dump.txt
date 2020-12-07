@@ -6,3 +6,11 @@ next_state.S2 0 0 1 1 0
 next_state.S3 0 1 0 1 0 
 next_state.S4 1 0 0 1 0 
 next_state.S_Last 0 0 0 1 1 
+
+State Machine - |harvardcpu|cu:controlunit|state
+Name state.S4 state.S3 state.S2 state.S1 state.S_Last 
+state.S1 0 0 0 0 0 
+state.S2 0 0 1 1 0 
+state.S3 0 1 0 1 0 
+state.S4 1 0 0 1 0 
+state.S_Last 0 0 0 1 1 

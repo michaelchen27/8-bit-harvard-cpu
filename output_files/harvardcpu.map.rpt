@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Mon Dec 07 07:30:30 2020
+Mon Dec 07 08:24:49 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -14,16 +14,17 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |harvardcpu|cu:controlunit|next_state
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Port Connectivity Checks: "programmemory:rom"
- 13. Port Connectivity Checks: "datamemory:ram"
- 14. Port Connectivity Checks: "memoryint:memoryinterface"
- 15. Port Connectivity Checks: "cu:controlunit"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  9. State Machine - |harvardcpu|cu:controlunit|state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "programmemory:rom"
+ 14. Port Connectivity Checks: "datamemory:ram"
+ 15. Port Connectivity Checks: "memoryint:memoryinterface"
+ 16. Port Connectivity Checks: "cu:controlunit"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -49,13 +50,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Dec 07 07:30:30 2020       ;
+; Analysis & Synthesis Status     ; Successful - Mon Dec 07 08:24:49 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 110                                         ;
+; Total registers                 ; 115                                         ;
 ; Total pins                      ; 42                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -193,7 +194,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 85        ;
+; Estimate of Logic utilization (ALMs needed) ; 86        ;
 ;                                             ;           ;
 ; Combinational ALUT usage for logic          ; 105       ;
 ;     -- 7 input functions                    ; 6         ;
@@ -202,15 +203,15 @@ refer to the applicable agreement for further details.
 ;     -- 4 input functions                    ; 9         ;
 ;     -- <=3 input functions                  ; 24        ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 110       ;
+; Dedicated logic registers                   ; 115       ;
 ;                                             ;           ;
 ; I/O pins                                    ; 42        ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 110       ;
-; Total fan-out                               ; 956       ;
+; Maximum fan-out                             ; 115       ;
+; Total fan-out                               ; 971       ;
 ; Average fan-out                             ; 3.11      ;
 +---------------------------------------------+-----------+
 
@@ -220,9 +221,9 @@ refer to the applicable agreement for further details.
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name ; Library Name ;
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
-; |harvardcpu                    ; 105 (8)             ; 110 (0)                   ; 0                 ; 0          ; 42   ; 0            ; |harvardcpu                           ; harvardcpu  ; work         ;
+; |harvardcpu                    ; 105 (8)             ; 115 (0)                   ; 0                 ; 0          ; 42   ; 0            ; |harvardcpu                           ; harvardcpu  ; work         ;
 ;    |alu:arithmeticlogicunit|   ; 2 (2)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|alu:arithmeticlogicunit   ; alu         ; work         ;
-;    |cu:controlunit|            ; 95 (95)             ; 86 (86)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|cu:controlunit            ; cu          ; work         ;
+;    |cu:controlunit|            ; 95 (95)             ; 91 (91)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|cu:controlunit            ; cu          ; work         ;
 ;    |memoryint:memoryinterface| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|memoryint:memoryinterface ; memoryint   ; work         ;
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -242,6 +243,20 @@ Encoding Type:  One-Hot
 +-------------------+---------------+---------------+---------------+---------------+-------------------+
 
 
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------+
+; State Machine - |harvardcpu|cu:controlunit|state                        ;
++--------------+----------+----------+----------+----------+--------------+
+; Name         ; state.S4 ; state.S3 ; state.S2 ; state.S1 ; state.S_Last ;
++--------------+----------+----------+----------+----------+--------------+
+; state.S1     ; 0        ; 0        ; 0        ; 0        ; 0            ;
+; state.S2     ; 0        ; 0        ; 1        ; 1        ; 0            ;
+; state.S3     ; 0        ; 1        ; 0        ; 1        ; 0            ;
+; state.S4     ; 1        ; 0        ; 0        ; 1        ; 0            ;
+; state.S_Last ; 0        ; 0        ; 0        ; 1        ; 1            ;
++--------------+----------+----------+----------+----------+--------------+
+
+
 +------------------------------------------------------------+
 ; Registers Removed During Synthesis                         ;
 +---------------------------------------+--------------------+
@@ -251,7 +266,10 @@ Encoding Type:  One-Hot
 ; cu:controlunit|next_state~7           ; Lost fanout        ;
 ; cu:controlunit|next_state~8           ; Lost fanout        ;
 ; cu:controlunit|next_state~9           ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
+; cu:controlunit|state~4                ; Lost fanout        ;
+; cu:controlunit|state~5                ; Lost fanout        ;
+; cu:controlunit|state~6                ; Lost fanout        ;
+; Total Number of Removed Registers = 7 ;                    ;
 +---------------------------------------+--------------------+
 
 
@@ -260,10 +278,10 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 110   ;
+; Total registers                              ; 115   ;
 ; Number of registers using Synchronous Clear  ; 16    ;
 ; Number of registers using Synchronous Load   ; 8     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 5     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 104   ;
 ; Number of registers using Preset             ; 0     ;
@@ -326,7 +344,8 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 110                         ;
+; arriav_ff             ; 115                         ;
+;     CLR               ; 5                           ;
 ;     ENA               ; 80                          ;
 ;     ENA SCLR          ; 16                          ;
 ;     ENA SLD           ; 8                           ;
@@ -347,7 +366,7 @@ Encoding Type:  One-Hot
 ; boundary_port         ; 42                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.40                        ;
+; Average LUT depth     ; 2.34                        ;
 +-----------------------+-----------------------------+
 
 
@@ -356,7 +375,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -366,7 +385,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Mon Dec 07 07:30:19 2020
+    Info: Processing started: Mon Dec 07 08:24:35 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -391,7 +410,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.
 Info (12127): Elaborating entity "harvardcpu" for the top level hierarchy
 Info (12128): Elaborating entity "cu" for hierarchy "cu:controlunit" File: D:/harvardcpu/harvardcpu.v Line: 28
 Warning (10030): Net "temp_in2" at cu.v(29) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/cu.v Line: 29
-Info (10018): Can't recognize finite state machine "state" because it has a complex reset state
 Info (12128): Elaborating entity "alu" for hierarchy "alu:arithmeticlogicunit" File: D:/harvardcpu/harvardcpu.v Line: 30
 Info (12128): Elaborating entity "memoryint" for hierarchy "memoryint:memoryinterface" File: D:/harvardcpu/harvardcpu.v Line: 32
 Info (12128): Elaborating entity "datamemory" for hierarchy "datamemory:ram" File: D:/harvardcpu/harvardcpu.v Line: 33
@@ -427,20 +445,18 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "cmd_memory[6]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
     Warning (13410): Pin "cmd_memory[7]" is stuck at GND File: D:/harvardcpu/harvardcpu.v Line: 11
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rst" File: D:/harvardcpu/harvardcpu.v Line: 8
-Info (21057): Implemented 233 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 238 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 191 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
-    Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Mon Dec 07 07:30:30 2020
-    Info: Elapsed time: 00:00:11
+    Info (21061): Implemented 196 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 4827 megabytes
+    Info: Processing ended: Mon Dec 07 08:24:49 2020
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:23
 
 

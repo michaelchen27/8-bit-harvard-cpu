@@ -138,6 +138,10 @@
 				{
 					"name" : "data_program[7]",
 					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
 				}
 			]
 		}

@@ -60,7 +60,7 @@ end
 
 always @(posedge clk)
     begin
-	 state = next_state;
+	 next_state = state;
         case(state)
         S1:
             begin
