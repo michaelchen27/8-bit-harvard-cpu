@@ -112,10 +112,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "data_program[1]",
-					"strict" : false
-				},
-				{
 					"name" : "data_program[4]",
 					"strict" : false
 				},
@@ -124,15 +120,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "data_program[6]",
+					"strict" : false
+				},
+				{
+					"name" : "data_program[1]",
+					"strict" : false
+				},
+				{
 					"name" : "data_program[2]",
 					"strict" : false
 				},
 				{
 					"name" : "data_program[3]",
-					"strict" : false
-				},
-				{
-					"name" : "data_program[6]",
 					"strict" : false
 				},
 				{

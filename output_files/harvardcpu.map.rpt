@@ -1,5 +1,5 @@
 Analysis & Synthesis report for harvardcpu
-Mon Dec 07 08:24:49 2020
+Mon Dec 07 09:09:51 2020
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -50,13 +50,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Dec 07 08:24:49 2020       ;
+; Analysis & Synthesis Status     ; Successful - Mon Dec 07 09:09:51 2020       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; harvardcpu                                  ;
 ; Top-level Entity Name           ; harvardcpu                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 115                                         ;
+; Total registers                 ; 155                                         ;
 ; Total pins                      ; 42                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -194,25 +194,25 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 86        ;
+; Estimate of Logic utilization (ALMs needed) ; 125       ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 105       ;
-;     -- 7 input functions                    ; 6         ;
-;     -- 6 input functions                    ; 47        ;
-;     -- 5 input functions                    ; 19        ;
+; Combinational ALUT usage for logic          ; 130       ;
+;     -- 7 input functions                    ; 19        ;
+;     -- 6 input functions                    ; 49        ;
+;     -- 5 input functions                    ; 24        ;
 ;     -- 4 input functions                    ; 9         ;
-;     -- <=3 input functions                  ; 24        ;
+;     -- <=3 input functions                  ; 29        ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 115       ;
+; Dedicated logic registers                   ; 155       ;
 ;                                             ;           ;
 ; I/O pins                                    ; 42        ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 115       ;
-; Total fan-out                               ; 971       ;
-; Average fan-out                             ; 3.11      ;
+; Maximum fan-out                             ; 155       ;
+; Total fan-out                               ; 1224      ;
+; Average fan-out                             ; 3.25      ;
 +---------------------------------------------+-----------+
 
 
@@ -221,9 +221,9 @@ refer to the applicable agreement for further details.
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name ; Library Name ;
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
-; |harvardcpu                    ; 105 (8)             ; 115 (0)                   ; 0                 ; 0          ; 42   ; 0            ; |harvardcpu                           ; harvardcpu  ; work         ;
+; |harvardcpu                    ; 130 (8)             ; 155 (0)                   ; 0                 ; 0          ; 42   ; 0            ; |harvardcpu                           ; harvardcpu  ; work         ;
 ;    |alu:arithmeticlogicunit|   ; 2 (2)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|alu:arithmeticlogicunit   ; alu         ; work         ;
-;    |cu:controlunit|            ; 95 (95)             ; 91 (91)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|cu:controlunit            ; cu          ; work         ;
+;    |cu:controlunit|            ; 120 (120)           ; 131 (131)                 ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|cu:controlunit            ; cu          ; work         ;
 ;    |memoryint:memoryinterface| ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |harvardcpu|memoryint:memoryinterface ; memoryint   ; work         ;
 +--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -278,12 +278,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 115   ;
+; Total registers                              ; 155   ;
 ; Number of registers using Synchronous Clear  ; 16    ;
 ; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 5     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 104   ;
+; Number of registers using Clock Enable       ; 144   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -293,10 +293,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|temp_addr_memory[4] ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|cir[7]              ;
-; 11:1               ; 8 bits    ; 56 LEs        ; 0 LEs                ; 56 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|pc[1]               ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|Selector40          ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|temp_addr_memory[1] ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|cir[2]              ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 0 LEs                ; 56 LEs                 ; Yes        ; |harvardcpu|cu:controlunit|pc[7]               ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|Selector42          ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|gpr                 ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |harvardcpu|cu:controlunit|temp_in1            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
@@ -344,29 +344,29 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 115                         ;
+; arriav_ff             ; 155                         ;
 ;     CLR               ; 5                           ;
-;     ENA               ; 80                          ;
+;     ENA               ; 120                         ;
 ;     ENA SCLR          ; 16                          ;
 ;     ENA SLD           ; 8                           ;
 ;     plain             ; 6                           ;
 ; arriav_io_obuf        ; 8                           ;
-; arriav_lcell_comb     ; 106                         ;
+; arriav_lcell_comb     ; 131                         ;
 ;     arith             ; 8                           ;
 ;         1 data inputs ; 8                           ;
-;     extend            ; 6                           ;
-;         7 data inputs ; 6                           ;
-;     normal            ; 92                          ;
+;     extend            ; 19                          ;
+;         7 data inputs ; 19                          ;
+;     normal            ; 104                         ;
 ;         0 data inputs ; 1                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 15                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 10                          ;
 ;         4 data inputs ; 9                           ;
-;         5 data inputs ; 19                          ;
-;         6 data inputs ; 47                          ;
+;         5 data inputs ; 24                          ;
+;         6 data inputs ; 49                          ;
 ; boundary_port         ; 42                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.34                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.19                        ;
 +-----------------------+-----------------------------+
 
 
@@ -385,7 +385,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Mon Dec 07 08:24:35 2020
+    Info: Processing started: Mon Dec 07 09:09:36 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off harvardcpu -c harvardcpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -425,7 +425,7 @@ Warning (10030): Net "pm.data_a" at programmemory.v(6) has no driver or initial 
 Warning (10030): Net "pm.waddr_a" at programmemory.v(6) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/programmemory.v Line: 6
 Warning (10030): Net "pm.we_a" at programmemory.v(6) has no driver or initial value, using a default initial value '0' File: D:/harvardcpu/programmemory.v Line: 6
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "cu:controlunit|gpr" is uninferred due to inappropriate RAM size File: D:/harvardcpu/cu.v Line: 30
+    Info (276007): RAM logic "cu:controlunit|gpr" is uninferred due to asynchronous read logic File: D:/harvardcpu/cu.v Line: 30
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13048): Converted tri-state node "datamemory[7]" into a selector File: D:/harvardcpu/cu.v Line: 190
     Warning (13048): Converted tri-state node "datamemory[6]" into a selector File: D:/harvardcpu/cu.v Line: 190
@@ -448,15 +448,15 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 238 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 305 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 24 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 196 logic cells
+    Info (21061): Implemented 263 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 4827 megabytes
-    Info: Processing ended: Mon Dec 07 08:24:49 2020
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:23
+    Info: Peak virtual memory: 4826 megabytes
+    Info: Processing ended: Mon Dec 07 09:09:51 2020
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:24
 
 

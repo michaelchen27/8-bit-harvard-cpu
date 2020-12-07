@@ -27,7 +27,7 @@ output[7:0] addr_program, addr_memory, cmd_memory, ins_alu, in1, in2; //addr_pro
 reg[7:0] cir, operand1, operand2, pc; //Internal registers, CIR = Current Instruction Register.
 reg[7:0] temp_addr_memory, temp_cmd_memory, temp_data_memory; //Temporary registers for Data Memory.
 reg[7:0] temp_ins_alu, temp_in1, temp_in2; //Temporary registers for ALU.
-reg[7:0] gpr[2:0]; //General Purpose Register. GPR digunakan untuk mengakses registers. 0[000] 0[000]. GPR[0] digunakan untuk Acc.
+reg[7:0] gpr[7:0]; //General Purpose Register. GPR digunakan untuk mengakses registers. 0[000] 0[000]. GPR[0] digunakan untuk Acc.
 reg[3:0] state; //Register to keep track the state.
 reg[3:0] next_state;
 reg data_in; //Flag untuk mengubah "data_memory" yang bidirectional menjadi mode input atau output.
