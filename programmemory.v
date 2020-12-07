@@ -1,9 +1,9 @@
 module programmemory(addr_in, data_out);
-
+	
 	input [7:0] addr_in;
 	output [7:0] data_out;
 
-	reg [7:0] pm[15:0]; //pm memiliki merupakan multidimensional array dengan dimensi 8x8
+	reg [7:0] pm[15:0]; //pm memiliki merupakan multidimensional array dengan dimensi 16x8. 16 Instruksi masing2 isi 8 bit.
 	
 	assign data_out = pm[addr_in]; //instruksi yang dikeluarkan diminta berdasarkan alamatnya.
 	

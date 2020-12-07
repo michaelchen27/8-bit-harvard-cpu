@@ -12,7 +12,7 @@ module memoryint(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 	assign data_cu = cmd_in? 8'bzzzzzzzz : tempData_cu ; //Kalau Read, data_cu jadi output untuk nerusin tempData_cu
 	assign data_dm = cmd_in? tempData_dm : 8'bzzzzzzzz ; //Kalau Write, data_dm jadi output untuk nerusin tempData_dm.
 	
-	always @ (posedge clk) 
+	always @ (posedge clk)
 	begin
 			if (cmd_in == 1'b0) //read
 				begin 
@@ -20,7 +20,7 @@ module memoryint(cmd_in, cmd_out, addr_in, addr_out, data_cu, data_dm, clk);
 				end
 				
 			else if (cmd_in == 1'b1) //write
-				begin	
+				begin
 					tempData_dm = data_cu;
 				end		
 	end

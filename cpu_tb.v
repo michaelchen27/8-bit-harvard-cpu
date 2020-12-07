@@ -2,14 +2,14 @@ module cpu_tb();
     reg clk;
 	 reg rst;
 
-    wire [7:0] prog_addr, prog_data;
-    wire [7:0] data_cmd, data_addr, data_line;
+    wire [7:0] pmi_addr, pmi_data;
+    wire [7:0] mi_cmd, mi_addr, mi_data;
     
 	harvardcpu cpu(
-			clk, rst, data_program,
-			addr_memory, addr_program, cmd_memory,
-			data_memory
-	);	
+			clk, rst,
+			pmi_data, pmi_addr,
+			mi_cmd, mi_addr, mi_data
+	);
 
     always #5 clk = ~clk;
 
