@@ -15,8 +15,8 @@ module cpu_tb();
 
     initial
     begin
-        #0 clk = 0;
-		  #0 rst = 1;
-		  #1 rst = 0;
+        #0 	clk = 0;
+				rst = 1;
+		  #1 	rst = 0;
     end
 endmodule

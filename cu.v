@@ -15,7 +15,6 @@ localparam
 //Reg Type INPUT
 input clk;
 input rst;
-
 input[7:0] data_program, result; //data_program di diagram namanya "instruction"
 
 //Reg Type INOUT for Bidirectional port.
@@ -161,7 +160,7 @@ always @(posedge clk)
                             begin
                                 temp_addr_memory = operand1;
                                 temp_cmd_memory = 8'b00000000; //read dari memory
-                                data_in = 1'b1; //temp_addr_memory -> addr_memory
+                                data_in = 1'b1; //tidak terjadi write data ke mem.
                                 pc = pc+1'b1;
                                 next_state = S4;
                             end
